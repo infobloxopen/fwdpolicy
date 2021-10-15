@@ -23,7 +23,7 @@ import (
 	otext "github.com/opentracing/opentracing-go/ext"
 )
 
-var log = clog.NewWithPlugin("forward")
+var log = clog.NewWithPlugin("fwdpolicy")
 
 // Forward represents a plugin instance that can proxy requests to another (DNS) server. It has a list
 // of proxies each representing one upstream proxy.
@@ -72,7 +72,7 @@ func (f *Forward) SetProxy(p *Proxy) {
 func (f *Forward) Len() int { return len(f.proxies) }
 
 // Name implements plugin.Handler.
-func (f *Forward) Name() string { return "forward" }
+func (f *Forward) Name() string { return "fwdpolicy" }
 
 // ServeDNS implements plugin.Handler.
 func (f *Forward) ServeDNS(ctx context.Context, w dns.ResponseWriter, r *dns.Msg) (int, error) {

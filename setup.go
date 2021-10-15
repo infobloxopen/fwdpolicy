@@ -16,15 +16,15 @@ import (
 	"github.com/coredns/coredns/plugin/pkg/transport"
 )
 
-func init() { plugin.Register("forward", setup) }
+func init() { plugin.Register("fwdpolicy", setup) }
 
 func setup(c *caddy.Controller) error {
 	f, err := parseForward(c)
 	if err != nil {
-		return plugin.Error("forward", err)
+		return plugin.Error("fwdpolicy", err)
 	}
 	if f.Len() > max {
-		return plugin.Error("forward", fmt.Errorf("more than %d TOs configured: %d", max, f.Len()))
+		return plugin.Error("fwdpolicy", fmt.Errorf("more than %d TOs configured: %d", max, f.Len()))
 	}
 
 	dnsserver.GetConfig(c).AddPlugin(func(next plugin.Handler) plugin.Handler {
