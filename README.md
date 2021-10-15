@@ -27,11 +27,11 @@ type Policy interface {
 }
 ```
 
-`List` should return an order list of proxy (upstream servers) based on the desired policy behavior.
+`List` should return an ordered list of Proxy (upstream servers) based on the desired policy behavior.
 _fwdpolicy_, exactly as _forward_ plugin will attempt to forward to the returned proxy servers in order received,
 stopping when successful or total time elapsed exceeds timeout.
 
-`String` is the string value used when selecting the policy in the Corefile.
+`String` should return the string value used when selecting the policy in the Corefile.
 
 ## Examples
 
@@ -41,7 +41,7 @@ the _mypolicy_ plugin.
 ```
 . {
   mypolicy
-  forward . 10.0.0.10 10.0.0.11 10.0.0.12 {
+  fwdpolicy . 10.0.0.10 10.0.0.11 10.0.0.12 {
     policy mypolicy
   }
 }
