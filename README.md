@@ -17,7 +17,19 @@ is a copy of the forward plugin README from coredns/coredns.
 
 ## Writing a forwarding policy plugin
 
-TODO
+Any plugin that implements the `Policy` interface can be used as a forwarding policy plugin.
+
+```golang
+package fwdpolicy
+type Policy interface {
+	List(context.Context, []*Proxy, *request.Request) []*Proxy
+	String() string
+}
+```
+
+`List` should return an order list of proxy (upstream servers) based on the desired policy behavior.
+_fwdpolicy_, exactly as _forward_ plugin will attempt to forward to the returned proxy servers in order received,
+stopping when successful or total time elapsed exceeds timeout.
 
 ## Examples
 
