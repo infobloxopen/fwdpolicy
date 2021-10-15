@@ -7,15 +7,22 @@ forwarding policies via plugins.
 
 ## Description
 
-The *fwdpolicy* plugin is a copy of the *forward* plugin from coredns/coredns with an additional
-feature to add new policies via external plugin.
+The *fwdpolicy* plugin is a copy of the *forward* plugin from https://github.com/coredns/coredns with an additional
+feature that enables you to add new policies via external plugins.
 
 ## Syntax
 
 Syntax is identical to the *forward* plugin from coredns/coredns. See `README-forward.md`, which
 is a copy of the forward plugin README from coredns/coredns.
 
-## Writing a forwarding policy plugin
+## Forwarding Policy Plugins
+
+Below is a list of forwarding policy plugins that work with this plugin. If you write your own, please add
+them to this list.
+
+[conditional](https://github.com/chrisohaver/conditional) - enables expression based forwarding policies
+
+## Writing a Forwarding Policy Plugin
 
 Any plugin that implements the `Policy` interface can be used as a forwarding policy plugin.
 
