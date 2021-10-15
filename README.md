@@ -31,6 +31,8 @@ type Policy interface {
 _fwdpolicy_, exactly as _forward_ plugin will attempt to forward to the returned proxy servers in order received,
 stopping when successful or total time elapsed exceeds timeout.
 
+`String` is the string value used when selecting the policy in the Corefile.
+
 ## Examples
 
 Forward to upstream servers `10.0.0.10`, `10.0.0.11`, and `10.0.0.12` using the forwarding policy defined in 
