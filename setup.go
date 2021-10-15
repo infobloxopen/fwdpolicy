@@ -44,6 +44,22 @@ func setup(c *caddy.Controller) error {
 		return nil
 	})
 
+	if f.extPolicy != "" {
+		c.OnStartup(func() error {
+			// get external policy
+			for _, h := range dnsserver.GetConfig(c).Handlers() {
+				if pol, ok := h.(Policy); ok {
+					if pol.String() != f.extPolicy {
+						continue
+					}
+					f.p = pol
+					return nil
+				}
+			}
+			return plugin.Error(f.Name(), fmt.Errorf("unknown policy '%v'", f.extPolicy))
+		})
+	}
+
 	c.OnShutdown(func() error {
 		return f.OnShutdown()
 	})
@@ -243,7 +259,7 @@ func parseBlock(c *caddy.Controller, f *Forward) error {
 		case "sequential":
 			f.p = &sequential{}
 		default:
-			return c.Errf("unknown policy '%s'", x)
+			f.extPolicy = x
 		}
 	case "max_concurrent":
 		if !c.NextArg() {
