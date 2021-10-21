@@ -17,8 +17,8 @@ is a copy of the forward plugin README from coredns/coredns.
 
 ## Forwarding Policy Plugins
 
-Below is a list of forwarding policy plugins that work with this plugin. If you write your own, please add
-them to this list.
+Below is a list of forwarding policy plugins that work with this plugin. If you develop a forwarding policy plugin 
+and think it can be useful to others, please submit a PR to add it to this list.
 
 [conditional](https://github.com/chrisohaver/conditional) - enables expression based forwarding policies
 
