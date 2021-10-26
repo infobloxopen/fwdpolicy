@@ -26,7 +26,8 @@ and think it can be useful to others, please submit a PR to add it to this list.
 
 This is an external plugin.  To use it, you must build CoreDNS with this plugin and any forwarding policy plugins added
 to CoreDNS's `plugin.cfg`.  The _fwdpolicy_ plugin can either replace or be positioned adjacent the built in _forward_ plugin.
-The relative position of any forwarding policy plugin does not matter, i.e. they can be placed anywhere in the list.
+The relative position of any forwarding policy plugin does not matter, i.e. they can be placed anywhere in the list unless
+otherwise noted by the forwarding policy plugin's documentation.
 
 ## Writing a Forwarding Policy Plugin
 
