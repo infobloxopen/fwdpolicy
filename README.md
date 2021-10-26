@@ -22,6 +22,12 @@ and think it can be useful to others, please submit a PR to add it to this list.
 
 [conditional](https://github.com/chrisohaver/conditional) - enables expression based forwarding policies
 
+## External Plugin
+
+This is an external plugin.  To use it, you must build CoreDNS with this plugin and any forwarding policy plugins added
+to CoreDNS's `plugin.cfg`.  The _fwdpolicy_ plugin can either replace or be positioned adjacent the built in _forward_ plugin.
+The relative position of any forwarding policy plugin does not matter, i.e. they can be placed anywhere in the list.
+
 ## Writing a Forwarding Policy Plugin
 
 Any plugin that implements the `Policy` interface can be used as a forwarding policy plugin.
@@ -54,3 +60,8 @@ the _mypolicy_ plugin.
 }
 
 ```
+
+## Notes
+
+Originally proposed for CoreDNS's built in _forward_ plugin https://github.com/coredns/coredns/pull/4446.
+
